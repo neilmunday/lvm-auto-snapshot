@@ -25,7 +25,7 @@ The script can for example be used as a cron job to create daily back-ups:
 0       15      *       *       *       root    /usr/local/sbin/lvm-auto-snapshot.py -d 7 -g storage -l docs  -s 10 -k 7 > /var/log/lv_snapshot_docs.log  2>&1
 ```
 
-## Auto expansion of snapshots
+## Auto expansion of snapshots (optional)
 
 LVM has the ability to automatically expand snapshot volumes when they are almost full. By default this is not enabled. If you want to enable this feature then you will need to edit `/etc/lvm/lvm.conf` and set the following parameters:
 
