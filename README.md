@@ -16,7 +16,7 @@ If you run `lvs` you will see your snapshots, e.g.
 # lvs storage
   LV                     VG      Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
   docs                   storage owi-aor--- 200.00g                                    100.00
-  docs_backup_2021.05.24 storage sri-a-s---  10.00g      data   0.01
+  docs_backup_2021.05.24 storage sri-a-s---  10.00g      docs   0.01
 ```
 
 The script can for example be used as a cron job to create daily back-ups:
