@@ -71,7 +71,7 @@ if __name__ == "__main__":
     datestr = datetime.datetime.now().strftime("%Y.%m.%d")
     logging.debug(datestr)
 
-    rtn, stdout, stderr = runCommand("lvs -o vg_name,lv_name --report-format=json")
+    rtn, stdout, stderr = runCommand("/usr/sbin/lvs -o vg_name,lv_name --report-format=json")
     data = json.loads(stdout)
 
     if "report" not in data:
@@ -100,7 +100,7 @@ if __name__ == "__main__":
                     daysDiff = (datetime.date.today() - datetime.date(year, month, day)).days
                     if daysDiff > args.days:
                         logging.info("Removing snapshot %s/%s" % (lv["vg_name"], lv["lv_name"]))
-                        runCommand("lvremove -f %s/%s" % (lv["vg_name"], lv["lv_name"]))
+                        runCommand("/usr/sbin/lvremove -f %s/%s" % (lv["vg_name"], lv["lv_name"]))
                     else:
                         logging.info("Keeping snapshot %s/%s" % (lv["vg_name"], lv["lv_name"]))
 
@@ -115,6 +115,6 @@ if __name__ == "__main__":
 
     # create snapshot
     logging.info("creating snapshot for %s/%s" % (args.vg, args.lv))
-    runCommand("lvcreate --size %sG --permission r --snapshot '%s/%s' --name '%s'" % (args.size, args.vg, args.lv, backupLvName))
+    runCommand("/usr/sbin/lvcreate --size %sG --permission r --snapshot '%s/%s' --name '%s'" % (args.size, args.vg, args.lv, backupLvName))
 
     sys.exit(0)
